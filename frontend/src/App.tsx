@@ -7,6 +7,8 @@ import {
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ApiTest from "./pages/ApiTest";
+import Categories from "./pages/categories/Categories";
+import Products from "./pages/products/Products";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -31,6 +33,15 @@ function App() {
                     <Route
                         path="/dashboard"
                         element={<Dashboard />}
+                    />
+                    <Route
+                        path="/categories"
+                        element={<Categories />}
+                    />
+
+                    <Route
+                        path="/products"
+                        element={<Products />}
                     />
 
                 </Route>

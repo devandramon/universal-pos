@@ -3,6 +3,9 @@ import {
     useContext,
     useEffect,
     useState,
+} from "react";
+
+import type {
     ReactNode,
 } from "react";
 
@@ -49,6 +52,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             const response = await api.get("/user");
 
             setUser(response.data.user);
+
             localStorage.setItem(
                 "user",
                 JSON.stringify(response.data.user)
@@ -66,7 +70,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
         fetchUser();
     }, []);
 
-    const login = async (email: string, password: string) => {
+    const login = async (
+        email: string,
+        password: string
+    ) => {
         const response = await api.post("/login", {
             email,
             password,
@@ -75,7 +82,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const { token, user } = response.data;
 
         localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem(
+            "user",
+            JSON.stringify(user)
+        );
 
         setUser(user);
     };
